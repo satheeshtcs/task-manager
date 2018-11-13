@@ -69,6 +69,7 @@
     .listContainer ul li {
         margin: 10px;
         display:inline-block;
+        width:100%;
     }
     .filterContainer{
         margin-top: 50px;
