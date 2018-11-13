@@ -1,0 +1,98 @@
+.container {
+      padding: 80px 20px;
+      min-height: 100%;
+      width: 100%;
+      background: #EEE;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    } 
+    .filters li {
+        display: inline;
+        padding: 5px;
+    }
+    .filters li a{
+        color: #666;
+        padding: 5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid #673ab7;
+    }
+    .filters li a:hover{
+        color: #FFF;
+        padding: 5px;
+        text-transform: uppercase;
+        background-color: #673ab7;
+        text-decoration: none;
+        border: 1px solid #673ab7;
+    }
+    .filterButton{
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+    }
+    .disableButton{
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5px;
+        text-decoration: line-through;
+        color: #CCC;
+    }
+    input {
+        padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    }
+    button {
+        float: left;
+    width: 20%;
+    padding: 10px;
+    background: #673ab7;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    }
+    .searchContainer{
+        height: 20px;
+    }
+    .listContainer{
+        margin-top: 20px;   
+    }
+    .listContainer ul li {
+        margin: 10px;
+        display:inline-block;
+    }
+    .filterContainer{
+        margin-top: 50px;
+    }
+    .crossButton {
+        color: red;
+        font-size: 18px;
+        width: 80px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+    }
+    .title{
+        font-size: 24px;
+    }
+    .subtext{
+        font-size: 14px;
+    } 
+    .leftcolumn{    
+        width: 310px;
+        float: left;
+    }
+    .rightcolumn{
+        width: 150px;
+        float: left;
+        padding-top: 10px;
+    }
