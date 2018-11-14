@@ -1,49 +1,100 @@
 import { Component } from 'preact';
 import TaskModel from '../../components/store/index';
-
 import style from './style';
 
+/*
+---------------   Tasks --------------
+@description:
+Application default component
+*/
 const TASK_STATUS = ["waiting", "processing", "completed"];
-
 const sessionKey = "STORAGE_KEY";
-
 export default class Tasks extends Component {
-
+	
+	/*
+     * @constructor
+     * @description: Application initialization
+     * @param: none
+     * @return :void
+     */
     constructor() {
         super();
         this.state = { todos: [], text: '' };
         this.model = new TaskModel(sessionKey, () => this.setState({}));
         this.handleFilter();
     }
-
-    componentWillReceiveProps(nextProps, prevState) {
+   
+    /*
+     * @function: componentWillReceiveProps
+     * @description: lifecycle call when page reloaded
+     * @param: none
+     * @return :void
+     */
+    componentWillReceiveProps() {
         this.handleFilter();
     }
 
+    /*
+     * @function: handleFilter
+     * @description: get the value from the URL and call the subsequent function
+     * @param: none
+     * @return :void
+     */
     handleFilter() {
         let status = String(location.hash || '').split('/').pop();
         this.fetchTask(status);
     }
-
+    
+    /*
+     * @function: setText
+     * @description: setting state
+     * @param: none
+     * @return :void
+     */
     setText = e => {
         this.setState({ text: e.target.value });
     };
-
+    
+    /*
+     * @function: addTask
+     * @description: adding task
+     * @param: none
+     * @return :void
+     */
     addTask = () => {
         let { todos, text } = this.state;
         todos = todos.concat({ text });
         this.model.addTaskToStore(text, TASK_STATUS[0]);
         this.setState({ todos, text: '' });
     };
-
+    
+    
+    /*
+     * @function: destroy
+     * @description: model destroy function
+     * @param: none
+     * @return :void
+     */
     destroy = (taskId) => {
         this.model.destroy(taskId);
     };
-
+    
+    /*
+     * @function: fetchTask
+     * @description: fetch the task list
+     * @param: none
+     * @return :void
+     */
     fetchTask = (urlParams) => {
         urlParams ? this.model.fetchTaskList(urlParams) : this.model.fetchTaskList();
     }
-
+    
+    /*
+     * @function: stateChange
+     * @description: status change based on the type
+     * @param: none
+     * @return :void
+     */
     stateChange = (index, status, type) => {
         let currStateIndex = TASK_STATUS.indexOf(status);
         if (type === "prev" && status !== TASK_STATUS[0]) {
@@ -52,7 +103,15 @@ export default class Tasks extends Component {
             this.model.statusChange(index, TASK_STATUS[currStateIndex + 1]);
         }
     }
-
+    
+    
+    /*
+     * @render
+     * @description: application render function
+     * @param {todos} localStorage data []
+	 * @param {text} input value
+     * @return :rendering HTML snippet
+     */
     render({ }, { todos, text }) {
         return (
             <div class={style.container}>
