@@ -1,7 +1,6 @@
 # Task Manager
 
-Application to manage the task list.  
-
+Application to manage the task list. Used `localstorage` for storing the data.
 
 ## Prerequisits
 1. Node
