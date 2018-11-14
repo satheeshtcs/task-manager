@@ -21,6 +21,15 @@ export default class Tasks extends Component {
         super();
         this.state = { todos: [], text: '' };
         this.model = new TaskModel(sessionKey, () => this.setState({}));
+    }
+
+    /*
+     * @function: componentDidMount
+     * @description: invoked immediately after a component is mounted
+     * @param: none
+     * @return :void
+     */
+    componentDidMount() {        
         this.handleFilter();
     }
    
